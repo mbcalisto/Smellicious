@@ -5,7 +5,7 @@
       <br>
       Hi! This is <a href="https://lnkd.in/ehhRyCwU">Smellicious</a> <br>  
    </h3>
-   Developed by: <a href="https://github.com/mbcalisto">Mateus Calisto</a>, <a href="https://github.com/btwhelena">Helena Oliveira</a>,  <a href="https://github.com/emillymaia">Emilly Maia</a>,  <a href="https://github.com/thayslunesaca">Thays Lunes</a>.
+   Developed by: <a href="https://github.com/mbcalisto">Mateus Calisto</a>, <a href="https://github.com/btwhelena">Daniele Cavalcante</a>,  <a href="https://github.com/emillymaia">Lucas Barbosa</a>,  <a href="https://github.com/thayslunesaca">Paulo Henrique</a>.
 </div>
 
 ##
