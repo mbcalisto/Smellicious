@@ -10,7 +10,6 @@ import BottomSheet
 
 // MARK: - CHaracter Model and Sample Data
 
-
 struct EssenceModel: Identifiable, Hashable, Equatable {
     var id = UUID().uuidString
     var value: String
@@ -27,7 +26,6 @@ struct EssenceModel: Identifiable, Hashable, Equatable {
     }
     var niceMistures: [String] = []
 }
-
 
 var essences_: [EssenceModel] = [
     EssenceModel(value: "Lavender", icon: "Lavanda",
@@ -82,7 +80,6 @@ var essences_: [EssenceModel] = [
 struct ImageElementComponent: View {
     let essence: EssenceModel
     @State var isPopover = false
-    
     var body: some View {
         VStack {
             Button(action: { self.isPopover.toggle() }) {
@@ -98,36 +95,34 @@ struct ImageElementComponent: View {
                     EssenceDescription(essence: essence)
                 }
                 .ignoresSafeArea()
-  
-            }.buttonStyle(PlainButtonStyle())
+            } .buttonStyle(PlainButtonStyle())
         }
-        
     }
-    
 }
 
 struct EssenceDescription: View {
     let essence: EssenceModel
-    
     var body: some View {
         VStack(spacing: .zero) {
-            Text(essence.value)
-                .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
-                .font(.system(.title, design: .rounded))
-                .padding()
-            
-            Image(essence.icon)
-                .resizable()
-                .cornerRadius(100)
-                .frame(width: 100,
-                       height: 100, alignment: .leading)
-                .padding()
+            ScrollView {
+                Text(essence.value)
+                    .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
+                    .font(.system(.title, design: .rounded))
+                    .padding()
+                    .fixedSize(horizontal: false, vertical: true)
+                
+                Image(essence.icon)
+                    .resizable()
+                    .cornerRadius(100)
+                    .frame(width: 100,
+                           height: 100, alignment: .leading)
+                    .padding()
 
-          
-            Text(essence.textDescription)
-                .font(.system(.title2, design: .rounded))
-                .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
-
+                    Text(essence.textDescription)
+                        .font(.system(.title2, design: .rounded))
+                        .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             Spacer()
         }
         .padding()
