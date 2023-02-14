@@ -9,7 +9,10 @@ import Lottie
 import AVFoundation
 
 struct CombineEssencesView: View {
-    
+
+    @Environment(\.accessibilityShowButtonShapes)
+    private var accessibilityShowButtonShapes
+
     @State var essences: [EssenceModel] = essences_
     @State var essence1: EssenceModel? = nil
     @State var essence2: EssenceModel? = nil
@@ -71,15 +74,19 @@ struct CombineEssencesView: View {
     }
     
     func ResetButton() -> some View {
-        Button {
+        Button(action: {
             smokeName = "defaultSmoke"
             essence1 = nil
             essence2 = nil
-        }label: {
+        }, label: {
             Image(systemName: "arrow.clockwise")
-                .resizable()
-        }
-        .foregroundColor(.black)
+                .padding(3)
+                .foregroundColor(.black)
+                .border(
+                    .red,
+                    width: accessibilityShowButtonShapes ? 1 : 0
+                )
+        })
     }
     
     func mutedButton() -> some View {
@@ -93,7 +100,11 @@ struct CombineEssencesView: View {
             }
         }label: {
             Image(systemName: isPlaying ? "speaker.wave.2" :  "speaker.slash")
-                .resizable()
+                .padding(3)
+                .border(
+                    .red,
+                    width: accessibilityShowButtonShapes ? 1 : 0
+                )
         }
         .foregroundColor(.black)
     }
