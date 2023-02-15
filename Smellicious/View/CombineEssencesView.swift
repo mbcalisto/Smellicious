@@ -123,7 +123,7 @@ struct CombineEssencesView: View {
                     VStack {
                         HStack(spacing: 31) {
                             
-                            DropArea(essence: essence1){ id in
+                            DropArea(essence: essence1) { id in
                                 let impact = UIImpactFeedbackGenerator(style: .heavy)
                                 impact.impactOccurred()
                                 hapticFeedback()
@@ -136,7 +136,8 @@ struct CombineEssencesView: View {
                                     drop()
                                 }
                                 smokeName = (essence1?.smokeColor)!
-                            }
+                            }.accessibility(label: Text("Drag area empty"))
+
                             
                             DropArea2(essence: essence2) { id in
                                 let impact = UIImpactFeedbackGenerator(style: .heavy)
@@ -151,7 +152,8 @@ struct CombineEssencesView: View {
                                     drop()
                                 }
                                 smokeName = (essence2?.smokeColor)!
-                            }
+                            }.accessibility(label: Text("Drag area empty"))
+
                         }
                         
                         Divider()
