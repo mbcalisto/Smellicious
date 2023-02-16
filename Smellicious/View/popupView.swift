@@ -49,8 +49,9 @@ struct popupView: View {
 
                     Text(essence1?.badMisture ?? " ")
                         .foregroundColor(.white)
-                        .font(.system(.caption ,design: .rounded))
+                        .font(.system(.subheadline ,design: .rounded))
                         .padding(.trailing, 10)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
             }
             Button(action: {
@@ -92,8 +93,9 @@ struct popupView: View {
                         .font(.system(.title, design: .rounded))
                     Text("Your combination is a success! Enjoy your new scent. How about reading a book to make this moment even more perfect?")
                         .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
-                        .font(.system(size: 14, design: .rounded))
+                        .font(.system(.subheadline, design: .rounded))
                         .padding(.trailing, 10)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
             }
             Button(action: {
