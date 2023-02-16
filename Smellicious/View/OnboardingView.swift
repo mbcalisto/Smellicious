@@ -38,6 +38,7 @@ public struct WelcomeView: View {
                 Image("diff")
                     .resizable()
                     .frame(width: 225, height: 239, alignment: .center)
+                    .accessibility(label: Text("Difusor"))
                 Spacer().frame(height: 35)
                 ScrollView {
                     Text("Hey you! Welcome to Smellicious!")
@@ -76,6 +77,7 @@ public struct DragAndDropView: View {
                         RoundedRectangle(cornerRadius: 5)
                             .stroke(Color(red: 50/255, green: 73/255, blue: 60/255), lineWidth: 1).blur(radius: 0.3)
                             .shadow(color:Color(red: 50/255, green: 73/255, blue: 60/255), radius: 1))
+                    // .accessibility(label: Text("Gif image instructing how to combine essences"))
                 Spacer().frame(height: 20)
                 ScrollView {
                     Text("Are you looking for the perfect match?")
@@ -115,8 +117,7 @@ public struct PropertiesView: View {
                     .overlay(
                         RoundedRectangle(cornerRadius: 5)
                             .stroke(Color(red: 50/255, green: 73/255, blue: 60/255), lineWidth: 1).blur(radius: 0.3)
-                            .shadow(color:Color(red: 50/255, green: 73/255, blue: 60/255), radius: 1)
-                    )
+                            .shadow(color:Color(red: 50/255, green: 73/255, blue: 60/255), radius: 1))
                 Spacer().frame(height: 20)
                 ScrollView {
                     Text("""

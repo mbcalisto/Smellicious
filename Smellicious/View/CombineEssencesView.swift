@@ -9,10 +9,8 @@ import Lottie
 import AVFoundation
 
 struct CombineEssencesView: View {
-
     @Environment(\.accessibilityShowButtonShapes)
     private var accessibilityShowButtonShapes
-
     @State var essences: [EssenceModel] = essences_
     @State var essence1: EssenceModel? = nil
     @State var essence2: EssenceModel? = nil
@@ -35,12 +33,9 @@ struct CombineEssencesView: View {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer?.play()
             audioPlayer.volume = 0.3
-            
-        }catch{
+        } catch {
             print(error)
-            
         }
-        
     }
     
     func drop(){
@@ -51,12 +46,9 @@ struct CombineEssencesView: View {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer?.play()
             audioPlayer.volume = 0.3
-            
-        }catch{
+        } catch {
             print(error)
-            
         }
-        
     }
     
     func playSounds(_ humidifySound : String) {
@@ -78,7 +70,7 @@ struct CombineEssencesView: View {
             smokeName = "defaultSmoke"
             essence1 = nil
             essence2 = nil
-        }, label: {
+        } label: {
             Image(systemName: "arrow.clockwise")
                 .padding(3)
                 .foregroundColor(.black)
@@ -98,7 +90,7 @@ struct CombineEssencesView: View {
                 humidify.play()
                 isPlaying = true
             }
-        }label: {
+        } label: {
             Image(systemName: isPlaying ? "speaker.wave.2" :  "speaker.slash")
                 .padding(3)
                 .border(
@@ -109,9 +101,7 @@ struct CombineEssencesView: View {
         .foregroundColor(.black)
     }
     
-    
     var body: some View {
-        
         NavigationView {
             ZStack{
                 Color.init(red: 235/255, green: 252/255, blue: 225/255)
@@ -133,7 +123,6 @@ struct CombineEssencesView: View {
                     .offset(x: 0, y: 60)
                     VStack {
                         HStack(spacing: 31) {
-                            
                             DropArea(essence: essence1) { id in
                                 let impact = UIImpactFeedbackGenerator(style: .heavy)
                                 impact.impactOccurred()
@@ -148,8 +137,6 @@ struct CombineEssencesView: View {
                                 }
                                 smokeName = (essence1?.smokeColor)!
                             }.accessibility(label: Text("Drag area empty"))
-
-                            
                             DropArea2(essence: essence2) { id in
                                 let impact = UIImpactFeedbackGenerator(style: .heavy)
                                 impact.impactOccurred()
@@ -164,9 +151,7 @@ struct CombineEssencesView: View {
                                 }
                                 smokeName = (essence2?.smokeColor)!
                             }.accessibility(label: Text("Drag area empty"))
-
                         }
-                        
                         Divider()
                             .frame(width:330)
                             .padding(.top)
@@ -179,7 +164,6 @@ struct CombineEssencesView: View {
                         Divider()
                             .frame(width:330)
                     }
-                    
                 }.ignoresSafeArea()
                     .toolbar {
                         ResetButton()
@@ -195,14 +179,10 @@ struct CombineEssencesView: View {
                 LottieView(name: "confete")
                     .offset(x: 0, y: -200)
             }
-        
             popupView(popupPositive: $popupPositive, popupNegative: $popupNegative, smokeName: $smokeName, essence1: $essence1, essence2: $essence2, sparkles: $sparkles)
-                
         }
     }
-    
-    
-    
+
     @ViewBuilder
     func DragArea() -> some View {
         TabView {
@@ -215,7 +195,6 @@ struct CombineEssencesView: View {
                             let isSelected = row == essence1 || row == essence2
                             ImageElementComponent(essence: row)
                                 .opacity(isSelected ? 0.5 : 1.0)
-                            
                             Text(row.value)
                                 .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
                         }
@@ -243,7 +222,6 @@ struct CombineEssencesView: View {
                 }
             }
         }
-        
         .tabViewStyle(.page(indexDisplayMode: .always))
         .frame( height: 200)
         .onAppear {
@@ -260,28 +238,22 @@ struct CombineEssencesView: View {
             return
         }
         
-        
         if essence2.niceMistures.contains(essence1.value) {
-            
             DispatchQueue.main.async {
                 withAnimation {
                     sparkles = true
                 }
             }
-            
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 withAnimation {
                     popupPositive = true
                 }
             }
-            
-            
         } else {
             withAnimation {
                 popupNegative = true
             }
         }
-        
     }
 }
 
