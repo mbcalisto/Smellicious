@@ -46,13 +46,17 @@ struct popupView: View {
                         .padding(.top,3)
                         .foregroundColor(.white)
                         .font(.system(.title, design: .rounded))
+                        .accessibilityLabel("Warning: Oh no!")
 
                     Text(essence1?.badMisture ?? " ")
                         .foregroundColor(.white)
                         .font(.system(.subheadline ,design: .rounded))
                         .padding(.trailing, 10)
                         .fixedSize(horizontal: false, vertical: true)
+                        .accessibilityLabel("Reason: \(essence1?.badMisture ?? "")")
                 }
+                .accessibilityElement(children: .combine)
+                .accessibilityHint("This section displays a warning and its reason.")
             }
             Button(action: {
                 resetEssence()
