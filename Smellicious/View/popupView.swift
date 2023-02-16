@@ -101,6 +101,8 @@ struct popupView: View {
                         .padding(.trailing, 10)
                         .fixedSize(horizontal: false, vertical: true)
                 }
+                .accessibilityElement(children: .combine)
+                .accessibilityHint("This section displays a success message and a suggestion for further enjoyment.")
             }
             Button(action: {
                 resetEssence()
