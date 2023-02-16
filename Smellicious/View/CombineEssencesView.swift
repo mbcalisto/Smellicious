@@ -70,7 +70,7 @@ struct CombineEssencesView: View {
             smokeName = "defaultSmoke"
             essence1 = nil
             essence2 = nil
-        } label: {
+        }, label: {
             Image(systemName: "arrow.clockwise")
                 .padding(3)
                 .foregroundColor(.black)
