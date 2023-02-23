@@ -31,8 +31,20 @@ struct popupView: View {
                 .transition(.scale)
         }
     }
-    
+
+    func alertView(){
+        let alert = UIAlertController(title: "Login", message: "Enter your password", preferredStyle: .alert)
+
+        alert.addTextField{ (pass) in
+            pass.placeholder = "Password"
+            pass.isSecureTextEntry = true
+
+        }
+    }
+
+
     var popNegative: some View {
+
         VStack {
             HStack {
                 Image("sad")
@@ -71,11 +83,14 @@ struct popupView: View {
             Rectangle()
                 .fill(Color(red: 208/255, green: 196/255, blue: 223/255))
                 .foregroundColor(.white)
+        }.clipShape(RoundedRectangle(cornerRadius: 15))
+            .padding(.horizontal, 30)
+            .shadow(color: .gray, radius: 2, x: 0, y: 2)
+        .accessibilityRepresentation{
+            Text("B")
         }
-        .clipShape(RoundedRectangle(cornerRadius: 15))
-        .padding(.horizontal, 30)
-        .shadow(color: .gray, radius: 2, x: 0, y: 2)
-    }
+
+    } 
     
     var popPositive: some View {
         VStack{
@@ -134,3 +149,5 @@ struct VisualEffectView: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView { UIVisualEffectView() }
     func updateUIView(_ uiView: UIVisualEffectView, context: UIViewRepresentableContext<Self>) { uiView.effect = effect }
 }
+
+
