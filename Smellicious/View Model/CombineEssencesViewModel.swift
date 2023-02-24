@@ -10,7 +10,7 @@ import Algorithms
 
 
 func Difusor() -> some View {
-    Image("Difusor")
+    Image("Diffuser")
         .resizable()
         .aspectRatio(contentMode: .fit)
         .frame(width: 224, height: 146, alignment: .center)

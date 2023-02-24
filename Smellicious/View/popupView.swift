@@ -16,7 +16,6 @@ struct popupView: View {
     @Binding var sparkles: Bool
 
     var body: some View {
-        
         if popupNegative {
             VisualEffectView(effect: UIBlurEffect(style: .extraLight))
                 .edgesIgnoringSafeArea(.all)
@@ -24,7 +23,6 @@ struct popupView: View {
                 .overlay { popNegative }
                 .transition(.scale)
         }
-        
         if popupPositive {
             VisualEffectView(effect: UIBlurEffect(style: .extraLight))
                 .edgesIgnoringSafeArea(.all)
@@ -33,28 +31,32 @@ struct popupView: View {
                 .transition(.scale)
         }
     }
+    
     var popNegative: some View {
-        VStack{
-            HStack{
+        VStack {
+            HStack {
                 Image("sad")
                     .frame(width: 80 , height: 80, alignment: .bottom)
                     .clipShape(Circle())
                     .padding([.top, .leading], 20)
                     .padding(.bottom,15)
                     .padding(.trailing, 15)
-                
                 VStack(alignment: .leading) {
                     Text("Oh no!")
                         .padding(.top,3)
                         .foregroundColor(.white)
                         .font(.system(.title, design: .rounded))
+                        .accessibilityLabel("Warning: Oh no!")
 
                     Text(essence1?.badMisture ?? " ")
                         .foregroundColor(.white)
-                        .font(.system(size: 14, design: .rounded))
+                        .font(.system(.subheadline ,design: .rounded))
                         .padding(.trailing, 10)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .accessibilityLabel("Reason: \(essence1?.badMisture ?? "")")
                 }
-                
+                .accessibilityElement(children: .combine)
+                .accessibilityHint("This section displays a warning and its reason.")
             }
             Button(action: {
                 resetEssence()
@@ -68,18 +70,17 @@ struct popupView: View {
                     .foregroundColor(.black)
                     .clipShape(Rectangle())
             }
-            
         }
         .background {
             Rectangle()
                 .fill(Color(red: 208/255, green: 196/255, blue: 223/255))
                 .foregroundColor(.white)
-            
         }
         .clipShape(RoundedRectangle(cornerRadius: 15))
         .padding(.horizontal, 30)
         .shadow(color: .gray, radius: 2, x: 0, y: 2)
     }
+    
     var popPositive: some View {
         VStack{
             HStack{
@@ -89,21 +90,20 @@ struct popupView: View {
                     .padding([.top, .leading], 20)
                     .padding(.bottom,15)
                     .padding(.trailing, 15)
-                
                 VStack(alignment: .leading) {
                     Text("Yaaaay!")
                         .padding(.top,3)
                         .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
                         .font(.system(.title, design: .rounded))
-                    
                     Text("Your combination is a success! Enjoy your new scent. How about reading a book to make this moment even more perfect?")
                         .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
-                        .font(.system(size: 14, design: .rounded))
+                        .font(.system(.subheadline, design: .rounded))
                         .padding(.trailing, 10)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
-                
+                .accessibilityElement(children: .combine)
+                .accessibilityHint("This section displays a success message and a suggestion for further enjoyment.")
             }
-            
             Button(action: {
                 resetEssence()
                 sparkles = false
@@ -117,7 +117,6 @@ struct popupView: View {
                     .foregroundColor(.black)
                     .clipShape(Rectangle())
             }
-            
         }
         .background {
             Rectangle()
@@ -141,5 +140,3 @@ struct VisualEffectView: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView { UIVisualEffectView() }
     func updateUIView(_ uiView: UIVisualEffectView, context: UIViewRepresentableContext<Self>) { uiView.effect = effect }
 }
-
-
