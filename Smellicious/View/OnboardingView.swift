@@ -73,11 +73,13 @@ public struct DragAndDropView: View {
             VStack {
                 GifImage("dragAndDrop")
                     .frame(width: 300, height: 300, alignment: .center)
-                    .overlay(
+                    .overlay (
                         RoundedRectangle(cornerRadius: 5)
                             .stroke(Color(red: 50/255, green: 73/255, blue: 60/255), lineWidth: 1).blur(radius: 0.3)
-                            .shadow(color:Color(red: 50/255, green: 73/255, blue: 60/255), radius: 1))
-                    // .accessibility(label: Text("Gif image instructing how to combine essences"))
+                            .shadow(color:Color(red: 50/255, green: 73/255, blue: 60/255), radius: 1)
+                            .accessibility(label: Text("Drag and drop animation"))
+                    )
+                    .accessibility(label: Text("Animated GIF of drag and drop interaction"))
                 Spacer().frame(height: 20)
                 ScrollView {
                     Text("Are you looking for the perfect match?")
@@ -117,7 +119,10 @@ public struct PropertiesView: View {
                     .overlay(
                         RoundedRectangle(cornerRadius: 5)
                             .stroke(Color(red: 50/255, green: 73/255, blue: 60/255), lineWidth: 1).blur(radius: 0.3)
-                            .shadow(color:Color(red: 50/255, green: 73/255, blue: 60/255), radius: 1))
+                            .shadow(color:Color(red: 50/255, green: 73/255, blue: 60/255), radius: 1)
+                            .accessibility(label: Text("Drag and drop animation"))
+                    )
+                    .accessibility(label: Text("Animated GIF of drag and drop interaction"))
                 Spacer().frame(height: 20)
                 ScrollView {
                     Text("""
