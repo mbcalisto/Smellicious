@@ -158,7 +158,8 @@ struct CombineEssencesView: View {
                         Text("Essences")
                             .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
                             .font(.system(.title, design: .rounded))
-                            .frame(width: 132, height: 34, alignment: .bottom)
+                            .frame(width: 160, height: 34, alignment: .bottom)
+                            .dynamicTypeSize(...DynamicTypeSize.accessibility1)
                         
                         DragArea()
                         Divider()
@@ -198,6 +199,7 @@ struct CombineEssencesView: View {
                                 .opacity(isSelected ? 0.5 : 1.0)
                             Text(row.value)
                                 .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
+                                .dynamicTypeSize(...DynamicTypeSize.accessibility1)
                         }
                         // MARK: - Adding Drag Operation
                         .onDrag {
