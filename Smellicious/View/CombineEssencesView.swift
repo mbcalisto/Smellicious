@@ -201,6 +201,22 @@ struct CombineEssencesView: View {
                                 .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
                                 .dynamicTypeSize(...DynamicTypeSize.accessibility1)
                         }
+                        .accessibilityRepresentation {
+                            VStack {
+                                Button(action: {
+                                    let selectedEssence = essences.first { essence in
+                                        return essence.id
+                                    }
+                                }) {
+                                    let isSelected = row == essence1 || row == essence2
+                                    ImageElementComponent(essence: row)
+                                        .opacity(isSelected ? 0.5 : 1.0)
+                                }
+                                    .accessibility(label: Text("Essence button"))
+                                Text(row.value)
+                                    .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
+                            }
+                        }
                         // MARK: - Adding Drag Operation
                         .onDrag {
                             if isPlaying == true{
@@ -231,7 +247,7 @@ struct CombineEssencesView: View {
             UIPageControl.appearance().currentPageIndicatorTintColor = .black
             UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
         }
-    }
+            }
     
     func checkMisture() {
         guard let essence1 = essence1 else {
