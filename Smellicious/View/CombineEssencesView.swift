@@ -204,9 +204,7 @@ struct CombineEssencesView: View {
                         .accessibilityRepresentation {
                             VStack {
                                 Button(action: {
-                                    let selectedEssence = essences.first { essence in
-                                        return essence.id
-                                    }
+                                    dropAccessibilityMode(row: row)
                                 }) {
                                     let isSelected = row == essence1 || row == essence2
                                     ImageElementComponent(essence: row)
@@ -249,12 +247,12 @@ struct CombineEssencesView: View {
         }
             }
     
-    func checkMisture() {
+    func checkMisture() -> Bool {
         guard let essence1 = essence1 else {
-            return
+            return false
         }
         guard let essence2 = essence2 else {
-            return
+            return false
         }
         
         if essence2.niceMistures.contains(essence1.value) {
@@ -268,9 +266,36 @@ struct CombineEssencesView: View {
                     popupPositive = true
                 }
             }
+            return true
         } else {
             withAnimation {
                 popupNegative = true
+                return true
+            }
+        }
+        return false
+    }
+
+    func dropAccessibilityMode(row: EssenceModel) {
+        for item in essences {
+            if item.id == row.id && essence1 == nil {
+                essence1 = row
+                break
+            } else if item.id == row.id && essence1 == row {
+                essence1 = nil
+                break
+            } else if item.id == row.id && essence1 != nil && essence2 == nil{
+                essence2 = row
+                break
+            } else if item.id == row.id && essence2 == row {
+                essence2 = nil
+                break
+            }
+        }
+        if essence1 != nil && essence2 != nil {
+            if checkMisture() {
+                essence1 = nil
+                essence2 = nil
             }
         }
     }
