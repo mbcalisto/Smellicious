@@ -1,6 +1,8 @@
-//  CombineEssencesView.swift
-//  SmelliciousTest
-//  Created by Emilly Maia on 15/09/22.
+//
+//  CombineEssensesAccessibilityView.swift
+//  Smellicious
+//
+//  Created by Lucas Barbosa de Oliveira on 23/02/23.
 //
 
 import SwiftUI
@@ -8,7 +10,7 @@ import Algorithms
 import Lottie
 import AVFoundation
 
-struct CombineEssencesView: View {
+struct CombineEssencesAccessibilityView: View {
     @Environment(\.accessibilityShowButtonShapes)
     private var accessibilityShowButtonShapes
     @State var essences: [EssenceModel] = essences_
@@ -24,7 +26,7 @@ struct CombineEssencesView: View {
     @State var isPlaying = true
     @State var positiveFeedback = "Sparkless"
     @State var sparkles = false
-    
+
     func drag(){
         let pathSounds = Bundle.main.path(forResource: "drag", ofType: "wav")!
         let url = URL(fileURLWithPath: pathSounds)
@@ -37,7 +39,7 @@ struct CombineEssencesView: View {
             print(error)
         }
     }
-    
+
     func drop(){
         let pathSounds = Bundle.main.path(forResource: "drop", ofType: "wav")!
         let url = URL(fileURLWithPath: pathSounds)
@@ -50,7 +52,7 @@ struct CombineEssencesView: View {
             print(error)
         }
     }
-    
+
     func playSounds(_ humidifySound : String) {
         guard let soundURL = Bundle.main.url(forResource: humidifySound, withExtension: nil) else {
             fatalError("Unable to find \(humidifySound) in bundle")
@@ -64,7 +66,7 @@ struct CombineEssencesView: View {
         humidify.volume = 0.4
         humidify.numberOfLoops = 5
     }
-    
+
     func ResetButton() -> some View {
         Button(action: {
             smokeName = "defaultSmoke"
@@ -80,7 +82,7 @@ struct CombineEssencesView: View {
                 )
         })
     }
-    
+
     func mutedButton() -> some View {
         Button {
             if isPlaying {
@@ -100,7 +102,7 @@ struct CombineEssencesView: View {
         }
         .foregroundColor(.black)
     }
-    
+
     var body: some View {
         NavigationView {
             ZStack{
@@ -126,7 +128,7 @@ struct CombineEssencesView: View {
                             DropArea(essence: essence1) { id in
                                 let impact = UIImpactFeedbackGenerator(style: .heavy)
                                 impact.impactOccurred()
-                                hapticFeedback()
+                                hapticFeedbackAccessibility()
                                 let droppedEssence = essences.first { essence in
                                     return essence.id == id
                                 }
@@ -140,7 +142,7 @@ struct CombineEssencesView: View {
                             DropArea2(essence: essence2) { id in
                                 let impact = UIImpactFeedbackGenerator(style: .heavy)
                                 impact.impactOccurred()
-                                hapticFeedback()
+                                hapticFeedbackAccessibility()
                                 let droppedEssence = essences.first { essence in
                                     return essence.id == id
                                 }
@@ -158,9 +160,8 @@ struct CombineEssencesView: View {
                         Text("Essences")
                             .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
                             .font(.system(.title, design: .rounded))
-                            .frame(width: 160, height: 34, alignment: .bottom)
-                            .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-                        
+                            .frame(width: 132, height: 34, alignment: .bottom)
+
                         DragArea()
                         Divider()
                             .frame(width:330)
@@ -181,7 +182,7 @@ struct CombineEssencesView: View {
                     .offset(x: 0, y: -200)
             }
             popupView(popupPositive: $popupPositive, popupNegative: $popupNegative, smokeName: $smokeName, essence1: $essence1, essence2: $essence2, sparkles: $sparkles)
-                
+
         }
     }
 
@@ -199,21 +200,6 @@ struct CombineEssencesView: View {
                                 .opacity(isSelected ? 0.5 : 1.0)
                             Text(row.value)
                                 .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
-                                .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-                        }
-                        .accessibilityRepresentation {
-                            VStack {
-                                Button(action: {
-                                    dropAccessibilityMode(row: row)
-                                }) {
-                                    let isSelected = row == essence1 || row == essence2
-                                    ImageElementComponent(essence: row)
-                                        .opacity(isSelected ? 0.5 : 1.0)
-                                }
-                                    .accessibility(label: Text("Essence button"))
-                                Text(row.value)
-                                    .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
-                            }
                         }
                         // MARK: - Adding Drag Operation
                         .onDrag {
@@ -245,16 +231,16 @@ struct CombineEssencesView: View {
             UIPageControl.appearance().currentPageIndicatorTintColor = .black
             UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
         }
-            }
-    
-    func checkMisture() -> Bool {
+    }
+
+    func checkMisture() {
         guard let essence1 = essence1 else {
-            return false
+            return
         }
         guard let essence2 = essence2 else {
-            return false
+            return
         }
-        
+
         if essence2.niceMistures.contains(essence1.value) {
             DispatchQueue.main.async {
                 withAnimation {
@@ -266,47 +252,21 @@ struct CombineEssencesView: View {
                     popupPositive = true
                 }
             }
-            return true
         } else {
             withAnimation {
                 popupNegative = true
-                return true
-            }
-        }
-        return false
-    }
-
-    func dropAccessibilityMode(row: EssenceModel) {
-        for item in essences {
-            if item.id == row.id && essence1 == nil {
-                essence1 = row
-                break
-            } else if item.id == row.id && essence1 == row {
-                essence1 = nil
-                break
-            } else if item.id == row.id && essence1 != nil && essence2 == nil{
-                essence2 = row
-                break
-            } else if item.id == row.id && essence2 == row {
-                essence2 = nil
-                break
-            }
-        }
-        if essence1 != nil && essence2 != nil {
-            if checkMisture() {
-                essence1 = nil
-                essence2 = nil
             }
         }
     }
 }
 
 extension View {
-    func hapticFeedback (style: UIImpactFeedbackGenerator.FeedbackStyle = .heavy) -> some View {
+    func hapticFeedbackAccessibility (style: UIImpactFeedbackGenerator.FeedbackStyle = .heavy) -> some View {
         self.onTapGesture {
             let impact = UIImpactFeedbackGenerator(style: .heavy)
             impact.impactOccurred()
         }
     }
 }
+
 

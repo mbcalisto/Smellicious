@@ -38,6 +38,7 @@
 		ABC281E828E3E56D00845937 /* drag.wav in Resources */ = {isa = PBXBuildFile; fileRef = ABC281E728E3E56D00845937 /* drag.wav */; };
 		ABC281EA28E3E57900845937 /* drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = ABC281E928E3E57900845937 /* drop.wav */; };
 		AE06D3E228E29A08009140EC /* humidifySound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE06D3E128E29A08009140EC /* humidifySound.mp3 */; };
+		FC888BC629A78F6700B68182 /* CombineEssensesAccessibilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC888BC529A78F6700B68182 /* CombineEssensesAccessibilityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		ABC281E728E3E56D00845937 /* drag.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drag.wav; sourceTree = "<group>"; };
 		ABC281E928E3E57900845937 /* drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drop.wav; sourceTree = "<group>"; };
 		AE06D3E128E29A08009140EC /* humidifySound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = humidifySound.mp3; sourceTree = "<group>"; };
+		FC888BC529A78F6700B68182 /* CombineEssensesAccessibilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineEssensesAccessibilityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				0DBACC7328D8882900DAE036 /* LottieView.swift */,
 				0DE5B5F028D9FD5800670B59 /* OnboardingView.swift */,
 				0DE5B5FD28DB511300670B59 /* SplashScreenView.swift */,
+				FC888BC529A78F6700B68182 /* CombineEssensesAccessibilityView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			files = (
 				ABBBC5DD28D3529800AF7895 /* SizeComponents.swift in Sources */,
 				AB6FE7CC28D49CF7008A683E /* popupView.swift in Sources */,
+				FC888BC629A78F6700B68182 /* CombineEssensesAccessibilityView.swift in Sources */,
 				0DBACC7428D8882900DAE036 /* LottieView.swift in Sources */,
 				0DE5B5F128D9FD5800670B59 /* OnboardingView.swift in Sources */,
 				0DE5B5FE28DB511300670B59 /* SplashScreenView.swift in Sources */,
@@ -428,7 +432,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Smellicious/Preview Content\"";
-				DEVELOPMENT_TEAM = XPQY9CM5FF;
+				DEVELOPMENT_TEAM = 949BRFMFQG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -461,7 +465,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Smellicious/Preview Content\"";
-				DEVELOPMENT_TEAM = XPQY9CM5FF;
+				DEVELOPMENT_TEAM = 949BRFMFQG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
