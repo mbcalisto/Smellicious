@@ -24,6 +24,8 @@ struct CombineEssencesView: View {
     @State var isPlaying = true
     @State var positiveFeedback = "Sparkless"
     @State var sparkles = false
+    @State var droppedEssence1: EssenceModel? = nil
+    @State var droppedEssence2: EssenceModel? = nil
     
     func drag(){
         let pathSounds = Bundle.main.path(forResource: "drag", ofType: "wav")!
@@ -127,30 +129,31 @@ struct CombineEssencesView: View {
                                 let impact = UIImpactFeedbackGenerator(style: .heavy)
                                 impact.impactOccurred()
                                 hapticFeedback()
-                                let droppedEssence = essences.first { essence in
+                                droppedEssence1 = essences.first { essence in
                                     return essence.id == id
                                 }
-                                essence1 = droppedEssence
+                                essence1 = droppedEssence1
                                 checkMisture()
                                 if isPlaying == true{
                                     drop()
                                 }
                                 smokeName = (essence1?.smokeColor)!
-                            }.accessibility(label: Text("Drag area empty"))
+                            }.accessibility(label: (essence1 != nil) ? Text("Drag area filled with \(essence1?.value ?? "")") : Text("Drag area empty"))
+
                             DropArea2(essence: essence2) { id in
                                 let impact = UIImpactFeedbackGenerator(style: .heavy)
                                 impact.impactOccurred()
                                 hapticFeedback()
-                                let droppedEssence = essences.first { essence in
+                                droppedEssence2 = essences.first { essence in
                                     return essence.id == id
                                 }
-                                essence2 = droppedEssence
+                                essence2 = droppedEssence2
                                 checkMisture()
                                 if isPlaying == true{
                                     drop()
                                 }
                                 smokeName = (essence2?.smokeColor)!
-                            }.accessibility(label: Text("Drag area empty"))
+                            }.accessibility(label: (essence2 != nil) ? Text("Drag area filled with \(essence2?.value ?? "")") : Text("Drag area empty"))
                         }
                         Divider()
                             .frame(width:330)
