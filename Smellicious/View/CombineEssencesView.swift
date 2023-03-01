@@ -24,6 +24,7 @@ struct CombineEssencesView: View {
     @State var isPlaying = true
     @State var positiveFeedback = "Sparkless"
     @State var sparkles = false
+
     
     func drag(){
         let pathSounds = Bundle.main.path(forResource: "drag", ofType: "wav")!
@@ -171,6 +172,7 @@ struct CombineEssencesView: View {
                         mutedButton()
                     }
             }
+            .accessibilityHidden(popupNegative || popupPositive)
         }
         .onAppear(perform: {
             playSounds("humidifySound.mp3")
@@ -231,7 +233,7 @@ struct CombineEssencesView: View {
             UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
         }
     }
-    
+
     func checkMisture() {
         guard let essence1 = essence1 else {
             return
@@ -255,6 +257,7 @@ struct CombineEssencesView: View {
             withAnimation {
                 popupNegative = true
             }
+
         }
     }
 }
@@ -267,3 +270,4 @@ extension View {
         }
     }
 }
+
