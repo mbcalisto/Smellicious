@@ -174,6 +174,7 @@ struct CombineEssencesView: View {
                         mutedButton()
                     }
             }
+            .accessibilityHidden(popupNegative || popupPositive)
         }
         .onAppear(perform: {
             playSounds("humidifySound.mp3")
@@ -248,7 +249,6 @@ struct CombineEssencesView: View {
             UIPageControl.appearance().currentPageIndicatorTintColor = .black
             UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
         }
-            }
     
     func checkMisture() -> Bool {
         guard let essence1 = essence1 else {
@@ -300,6 +300,7 @@ struct CombineEssencesView: View {
                 essence1 = nil
                 essence2 = nil
             }
+
         }
     }
 }

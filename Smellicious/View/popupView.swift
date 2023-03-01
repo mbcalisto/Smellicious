@@ -32,16 +32,6 @@ struct popupView: View {
         }
     }
 
-    func alertView(){
-        let alert = UIAlertController(title: "Login", message: "Enter your password", preferredStyle: .alert)
-
-        alert.addTextField{ (pass) in
-            pass.placeholder = "Password"
-            pass.isSecureTextEntry = true
-
-        }
-    }
-
 
     var popNegative: some View {
 
@@ -60,41 +50,61 @@ struct popupView: View {
                         .font(.system(.title, design: .rounded))
                         .accessibilityLabel("Warning: Oh no!")
 
-                    Text(essence1?.badMisture ?? " ")
-                        .foregroundColor(.white)
-                        .font(.system(.subheadline ,design: .rounded))
-                        .padding(.trailing, 10)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .accessibilityLabel("Reason: \(essence1?.badMisture ?? "")")
-                }
-                .accessibilityElement(children: .combine)
-                .accessibilityHint("This section displays a warning and its reason.")
-            }
-            Button(action: {
-                resetEssence()
-                withAnimation {
-                    popupNegative = false
-                }
-            }) {
-                Text("Dismiss")
-                    .frame(maxWidth: .infinity, maxHeight: 45)
-                    .background(Color(.white))
-                    .foregroundColor(.black)
-                    .clipShape(Rectangle())
-            }
-        }
-        .background {
-            Rectangle()
-                .fill(Color(red: 208/255, green: 196/255, blue: 223/255))
-                .foregroundColor(.white)
-        }.clipShape(RoundedRectangle(cornerRadius: 15))
-            .padding(.horizontal, 30)
-            .shadow(color: .gray, radius: 2, x: 0, y: 2)
-        .accessibilityRepresentation{
-            Text("B")
-        }
+    var popNegative: some View {
 
-    } 
+            VStack {
+                HStack {
+                    Image("sad")
+                        .frame(width: 80 , height: 80, alignment: .bottom)
+                        .clipShape(Circle())
+                        .padding([.top, .leading], 20)
+                        .padding(.bottom,15)
+                        .padding(.trailing, 15)
+
+                    VStack(alignment: .leading) {
+                        Text("Oh no!")
+                            .padding(.top,3)
+                            .foregroundColor(.white)
+                            .font(.system(.title, design: .rounded))
+                            .accessibilityLabel("Warning: Oh no!")
+
+
+                        Text(essence1?.badMisture ?? " ")
+                            .foregroundColor(.white)
+                            .font(.system(.subheadline ,design: .rounded))
+                            .padding(.trailing, 10)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .accessibilityLabel("Reason: \(essence1?.badMisture ?? "")")
+
+                    }
+                    .accessibilityElement(children: .combine)
+                    .accessibilityHint("This section displays a warning and its reason.")
+
+                }
+                Button(action: {
+                    resetEssence()
+                    withAnimation {
+                        popupNegative = false
+                    }
+                }) {
+                    Text("Dismiss")
+                        .frame(maxWidth: .infinity, maxHeight: 45)
+                        .background(Color(.white))
+                        .foregroundColor(.black)
+                        .clipShape(Rectangle())
+
+                }
+            }
+            .background {
+                Rectangle()
+                    .fill(Color(red: 208/255, green: 196/255, blue: 223/255))
+                    .foregroundColor(.white)
+
+            }.clipShape(RoundedRectangle(cornerRadius: 15))
+                .padding(.horizontal, 30)
+                .shadow(color: .gray, radius: 2, x: 0, y: 2)
+
+    }
     
     var popPositive: some View {
         VStack{
