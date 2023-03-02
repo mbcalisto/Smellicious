@@ -24,6 +24,8 @@ struct CombineEssencesView: View {
     @State var isPlaying = true
     @State var positiveFeedback = "Sparkless"
     @State var sparkles = false
+    @State var droppedEssence1: EssenceModel? = nil
+    @State var droppedEssence2: EssenceModel? = nil
     
     func drag(){
         let pathSounds = Bundle.main.path(forResource: "drag", ofType: "wav")!
@@ -70,7 +72,7 @@ struct CombineEssencesView: View {
             smokeName = "defaultSmoke"
             essence1 = nil
             essence2 = nil
-        }, label: {
+        } ,label: {
             Image(systemName: "arrow.clockwise")
                 .padding(3)
                 .foregroundColor(.black)
@@ -127,30 +129,31 @@ struct CombineEssencesView: View {
                                 let impact = UIImpactFeedbackGenerator(style: .heavy)
                                 impact.impactOccurred()
                                 hapticFeedback()
-                                let droppedEssence = essences.first { essence in
+                                droppedEssence1 = essences.first { essence in
                                     return essence.id == id
                                 }
-                                essence1 = droppedEssence
+                                essence1 = droppedEssence1
                                 checkMisture()
                                 if isPlaying == true{
                                     drop()
                                 }
                                 smokeName = (essence1?.smokeColor)!
-                            }.accessibility(label: Text("Drag area empty"))
+                            }.accessibility(label: (essence1 != nil) ? Text("Drag area filled with \(essence1?.value ?? "")") : Text("Drag area empty"))
+
                             DropArea2(essence: essence2) { id in
                                 let impact = UIImpactFeedbackGenerator(style: .heavy)
                                 impact.impactOccurred()
                                 hapticFeedback()
-                                let droppedEssence = essences.first { essence in
+                                droppedEssence2 = essences.first { essence in
                                     return essence.id == id
                                 }
-                                essence2 = droppedEssence
+                                essence2 = droppedEssence2
                                 checkMisture()
                                 if isPlaying == true{
                                     drop()
                                 }
                                 smokeName = (essence2?.smokeColor)!
-                            }.accessibility(label: Text("Drag area empty"))
+                            }.accessibility(label: (essence2 != nil) ? Text("Drag area filled with \(essence2?.value ?? "")") : Text("Drag area empty"))
                         }
                         Divider()
                             .frame(width:330)
@@ -171,6 +174,7 @@ struct CombineEssencesView: View {
                         mutedButton()
                     }
             }
+            .accessibilityHidden(popupNegative || popupPositive)
         }
         .onAppear(perform: {
             playSounds("humidifySound.mp3")
@@ -181,6 +185,7 @@ struct CombineEssencesView: View {
                     .offset(x: 0, y: -200)
             }
             popupView(popupPositive: $popupPositive, popupNegative: $popupNegative, smokeName: $smokeName, essence1: $essence1, essence2: $essence2, sparkles: $sparkles)
+                
         }
     }
 
@@ -199,6 +204,19 @@ struct CombineEssencesView: View {
                             Text(row.value)
                                 .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
                                 .dynamicTypeSize(...DynamicTypeSize.accessibility1)
+                        }
+                        .accessibilityRepresentation {
+                            VStack {
+                                Button(action: {
+                                    dropAccessibilityMode(row: row)
+                                }) {
+                                    let isSelected = row == essence1 || row == essence2
+                                    ImageElementComponent(essence: row)
+                                        .opacity(isSelected ? 0.5 : 1.0)
+                                }
+                                Text(row.value)
+                                    .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
+                            }
                         }
                         // MARK: - Adding Drag Operation
                         .onDrag {
@@ -232,12 +250,12 @@ struct CombineEssencesView: View {
         }
     }
     
-    func checkMisture() {
+    func checkMisture() -> Bool {
         guard let essence1 = essence1 else {
-            return
+            return false
         }
         guard let essence2 = essence2 else {
-            return
+            return false
         }
         
         if essence2.niceMistures.contains(essence1.value) {
@@ -251,10 +269,38 @@ struct CombineEssencesView: View {
                     popupPositive = true
                 }
             }
+            return true
         } else {
             withAnimation {
                 popupNegative = true
+                return true
             }
+        }
+        return false
+    }
+
+    func dropAccessibilityMode(row: EssenceModel) {
+        for item in essences {
+            if item.id == row.id && essence1 == nil {
+                essence1 = row
+                break
+            } else if item.id == row.id && essence1 == row {
+                essence1 = nil
+                break
+            } else if item.id == row.id && essence1 != nil && essence2 == nil{
+                essence2 = row
+                break
+            } else if item.id == row.id && essence2 == row {
+                essence2 = nil
+                break
+            }
+        }
+        if essence1 != nil && essence2 != nil {
+            if checkMisture() {
+                essence1 = nil
+                essence2 = nil
+            }
+
         }
     }
 }
@@ -267,3 +313,4 @@ extension View {
         }
     }
 }
+

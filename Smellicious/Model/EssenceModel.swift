@@ -109,15 +109,13 @@ struct EssenceDescription: View {
                     .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
                     .font(.system(.title, design: .rounded))
                     .padding()
-                    .fixedSize(horizontal: false, vertical: true)
-                
+                    .fixedSize(horizontal: false, vertical: true) 
                 Image(essence.icon)
                     .resizable()
                     .cornerRadius(100)
                     .frame(width: 100,
                            height: 100, alignment: .leading)
                     .padding()
-
                     Text(essence.textDescription)
                         .font(.system(.title2, design: .rounded))
                         .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))

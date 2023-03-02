@@ -12,6 +12,8 @@ struct ContentView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators:  false) {
             CombineEssencesView()
+        }.accessibilityRepresentation{
+        
         }
     }
 }

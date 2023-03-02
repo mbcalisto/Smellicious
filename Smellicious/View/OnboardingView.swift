@@ -38,7 +38,8 @@ public struct WelcomeView: View {
                 Image("diff")
                     .resizable()
                     .frame(width: 225, height: 239, alignment: .center)
-                    .accessibility(label: Text("Difusor"))
+                    .accessibility(label: Text("The app logo which is Line drawing of an aromatherapy diffuser with steam coming out of the top"))
+                    .accessibilityRemoveTraits(.isImage)
                 Spacer().frame(height: 35)
                 ScrollView {
                     Text("Hey you! Welcome to Smellicious!")
