@@ -31,33 +31,6 @@ struct popupView: View {
                 .transition(.scale)
         }
     }
-
-
-//    var popNegative: some View {
-//
-//        VStack {
-//            HStack {
-//                Image("sad")
-//                    .frame(width: 80 , height: 80, alignment: .bottom)
-//                    .clipShape(Circle())
-//                    .padding([.top, .leading], 20)
-//                    .padding(.bottom,15)
-//                    .padding(.trailing, 15)
-//                VStack(alignment: .leading) {
-//                    Text("Oh no!")
-//                        .padding(.top,3)
-//                        .foregroundColor(.white)
-//                        .font(.system(.title, design: .rounded))
-//                        .accessibilityLabel("Warning: Oh no!")
-//
-//                }
-//
-//            }
-//
-//        }
-//
-//    }
-
     var popNegative: some View {
 
         VStack {
