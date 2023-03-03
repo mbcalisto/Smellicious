@@ -17,7 +17,7 @@ func Difusor() -> some View {
 }
 
 func Mancha() -> some View {
-    Image("mancha")
+    Image("backgroundTexture")
         .resizable()
         .aspectRatio(contentMode: .fit)
         .frame(width: 284, height: 213, alignment: .center)

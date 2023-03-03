@@ -14,52 +14,29 @@ struct popupView: View {
     @Binding var essence1: EssenceModel?
     @Binding var essence2: EssenceModel?
     @Binding var sparkles: Bool
-
+    
     var body: some View {
         if popupNegative {
             VisualEffectView(effect: UIBlurEffect(style: .extraLight))
                 .edgesIgnoringSafeArea(.all)
                 .opacity(0.7)
-                .overlay { popNegative }
-                .transition(.scale)
+                .overlay {
+                    popNegative
+                    .transition(.scale)
+                }
         }
         if popupPositive {
             VisualEffectView(effect: UIBlurEffect(style: .extraLight))
                 .edgesIgnoringSafeArea(.all)
                 .opacity(0.7)
-                .overlay { popPositive }
-                .transition(.scale)
+                .overlay {
+                    popPositive
+                    .transition(.scale)
+                }
         }
     }
-
-
-//    var popNegative: some View {
-//
-//        VStack {
-//            HStack {
-//                Image("sad")
-//                    .frame(width: 80 , height: 80, alignment: .bottom)
-//                    .clipShape(Circle())
-//                    .padding([.top, .leading], 20)
-//                    .padding(.bottom,15)
-//                    .padding(.trailing, 15)
-//                VStack(alignment: .leading) {
-//                    Text("Oh no!")
-//                        .padding(.top,3)
-//                        .foregroundColor(.white)
-//                        .font(.system(.title, design: .rounded))
-//                        .accessibilityLabel("Warning: Oh no!")
-//
-//                }
-//
-//            }
-//
-//        }
-//
-//    }
-
     var popNegative: some View {
-
+        
         VStack {
             HStack {
                 Image("sad")
@@ -68,52 +45,51 @@ struct popupView: View {
                     .padding([.top, .leading], 20)
                     .padding(.bottom,15)
                     .padding(.trailing, 15)
-
+                
                 VStack(alignment: .leading) {
                     Text("Oh no!")
                         .padding(.top,3)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .font(.system(.title, design: .rounded))
                         .accessibilityLabel("Warning: Oh no!")
-
-
+                    
                     Text(essence1?.badMisture ?? " ")
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .font(.system(.subheadline ,design: .rounded))
                         .padding(.trailing, 10)
                         .fixedSize(horizontal: false, vertical: true)
                         .accessibilityLabel("Reason: \(essence1?.badMisture ?? "")")
-
+                    
                 }
                 .accessibilityElement(children: .combine)
                 .accessibilityHint("This section displays a warning and its reason.")
-
+                
             }
             Button(action: {
-                resetEssence()
                 withAnimation {
                     popupNegative = false
                 }
+                resetEssence()
             }) {
                 Text("Dismiss")
                     .frame(maxWidth: .infinity, maxHeight: 45)
                     .background(Color(.white))
                     .foregroundColor(.black)
                     .clipShape(Rectangle())
-
+                
             }
         }
         .background {
             Rectangle()
                 .fill(Color(red: 208/255, green: 196/255, blue: 223/255))
-                .foregroundColor(.white)
-
+                .foregroundColor(.black)
+            
         }.clipShape(RoundedRectangle(cornerRadius: 15))
             .padding(.horizontal, 30)
             .shadow(color: .gray, radius: 2, x: 0, y: 2)
-
+        
     }
-
+    
     var popPositive: some View {
         VStack{
             HStack{
@@ -124,7 +100,7 @@ struct popupView: View {
                     .padding(.bottom,15)
                     .padding(.trailing, 15)
                 VStack(alignment: .leading) {
-                    Text("Yaaaay!")
+                    Text("Yeeees!")
                         .padding(.top,3)
                         .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
                         .font(.system(.title, design: .rounded))
@@ -138,11 +114,12 @@ struct popupView: View {
                 .accessibilityHint("This section displays a success message and a suggestion for further enjoyment.")
             }
             Button(action: {
-                resetEssence()
+                
                 sparkles = false
                 withAnimation {
                     popupPositive = false
                 }
+                resetEssence()
             }) {
                 Text("Dismiss")
                     .frame(maxWidth: .infinity, maxHeight: 45)
@@ -154,12 +131,12 @@ struct popupView: View {
         .background {
             Rectangle()
                 .fill(Color(red: 250/255, green: 197/255, blue: 227/255))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
         }
         .clipShape(RoundedRectangle(cornerRadius: 15))
         .padding(.horizontal, 30)
         .shadow(color: .gray, radius: 2, x: 0, y: 2)
-
+        
     }
     func resetEssence() {
         smokeName = "defaultSmoke"
@@ -168,10 +145,10 @@ struct popupView: View {
     }
 }
 
-    struct VisualEffectView: UIViewRepresentable {
-        var effect: UIVisualEffect?
-        func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView { UIVisualEffectView() }
-        func updateUIView(_ uiView: UIVisualEffectView, context: UIViewRepresentableContext<Self>) { uiView.effect = effect }
-    }
+struct VisualEffectView: UIViewRepresentable {
+    var effect: UIVisualEffect?
+    func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView { UIVisualEffectView() }
+    func updateUIView(_ uiView: UIVisualEffectView, context: UIViewRepresentableContext<Self>) { uiView.effect = effect }
+}
 
 

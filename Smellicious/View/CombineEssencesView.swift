@@ -138,7 +138,9 @@ struct CombineEssencesView: View {
                                     drop()
                                 }
                                 smokeName = (essence1?.smokeColor)!
-                            }.accessibility(label: (essence1 != nil) ? Text("Drag area filled with \(essence1?.value ?? "")") : Text("Drag area empty"))
+                            }.accessibility(label: (essence1 != nil) ? Text("First Drag area filled with \(essence1?.value ?? "")") : Text("First Drag area empty"))
+                                .accessibilityRemoveTraits(.isImage)
+                            
 
                             DropArea2(essence: essence2) { id in
                                 let impact = UIImpactFeedbackGenerator(style: .heavy)
@@ -153,17 +155,21 @@ struct CombineEssencesView: View {
                                     drop()
                                 }
                                 smokeName = (essence2?.smokeColor)!
-                            }.accessibility(label: (essence2 != nil) ? Text("Drag area filled with \(essence2?.value ?? "")") : Text("Drag area empty"))
+                            }.accessibility(label: (essence2 != nil) ? Text("Second Drag area filled with \(essence2?.value ?? "")") : Text("Second Drag area empty"))
+                                .accessibilityRemoveTraits(.isImage)
                         }
                         Divider()
                             .frame(width:330)
                             .padding(.top)
                         Text("Essences")
+                            .fontWeight(.medium)
                             .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
                             .font(.system(.title, design: .rounded))
-                            .frame(width: 160, height: 34, alignment: .bottom)
+                            .frame(width: 160, height: 45, alignment: .bottom)
                             .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-                        
+                        Divider()
+                            .frame(width:330)
+                            .padding(.top)
                         DragArea()
                         Divider()
                             .frame(width:330)
@@ -174,8 +180,8 @@ struct CombineEssencesView: View {
                         mutedButton()
                     }
             }
-            .accessibilityHidden(popupNegative || popupPositive)
-        }
+
+        }.accessibilityHidden(popupNegative || popupPositive)
         .onAppear(perform: {
             playSounds("humidifySound.mp3")
         })
@@ -200,10 +206,14 @@ struct CombineEssencesView: View {
                         VStack{
                             let isSelected = row == essence1 || row == essence2
                             ImageElementComponent(essence: row)
+                                .contentShape(.dragPreview, Circle())
                                 .opacity(isSelected ? 0.5 : 1.0)
                             Text(row.value)
+                                .fontWeight(.semibold)
                                 .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
                                 .dynamicTypeSize(...DynamicTypeSize.accessibility1)
+                            
+                            
                         }
                         .accessibilityRepresentation {
                             VStack {
@@ -216,8 +226,10 @@ struct CombineEssencesView: View {
                                 }
                                 Text(row.value)
                                     .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
+                                    .accessibilityHidden(true)
                             }
                         }
+                        
                         // MARK: - Adding Drag Operation
                         .onDrag {
                             if isPlaying == true{
@@ -236,6 +248,7 @@ struct CombineEssencesView: View {
                                 .frame(width: SizesComponents.widthScreen*0.20,
                                        height: SizesComponents.widthScreen*0.20, alignment: .leading)
                                 .contentShape(.dragPreview, Circle())
+                                
                             //                                .disabled(true)
                         }
                     }
@@ -313,4 +326,3 @@ extension View {
         }
     }
 }
-
