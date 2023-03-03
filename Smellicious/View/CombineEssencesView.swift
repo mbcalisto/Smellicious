@@ -174,8 +174,8 @@ struct CombineEssencesView: View {
                         mutedButton()
                     }
             }
-            .accessibilityHidden(popupNegative || popupPositive)
-        }
+
+        }.accessibilityHidden(popupNegative || popupPositive)
         .onAppear(perform: {
             playSounds("humidifySound.mp3")
         })
@@ -313,4 +313,3 @@ extension View {
         }
     }
 }
-
