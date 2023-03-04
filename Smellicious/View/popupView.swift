@@ -16,14 +16,15 @@ struct popupView: View {
     @Binding var sparkles: Bool
     
     var body: some View {
+        
         if popupNegative {
-            VisualEffectView(effect: UIBlurEffect(style: .extraLight))
-                .edgesIgnoringSafeArea(.all)
-                .opacity(0.7)
-                .overlay {
-                    popNegative
-                    .transition(.scale)
-                }
+                VisualEffectView(effect: UIBlurEffect(style: .extraLight))
+                    .edgesIgnoringSafeArea(.all)
+                    .opacity(0.7)
+                    .overlay {
+                        popNegative
+                        .transition(.scale)
+                    }
         }
         if popupPositive {
             VisualEffectView(effect: UIBlurEffect(style: .extraLight))
@@ -150,5 +151,3 @@ struct VisualEffectView: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView { UIVisualEffectView() }
     func updateUIView(_ uiView: UIVisualEffectView, context: UIViewRepresentableContext<Self>) { uiView.effect = effect }
 }
-
-
