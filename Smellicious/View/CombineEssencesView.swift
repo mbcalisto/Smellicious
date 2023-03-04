@@ -31,7 +31,7 @@ struct CombineEssencesView: View {
     @State var alertTitle: String = " "
     @State var alertMessage: String = " "
     
-    private var alertButtonText: String = "Ok!"
+    private var alertButtonText: String = "Start Over!"
     
     
     func drag(){
@@ -103,12 +103,14 @@ struct CombineEssencesView: View {
                 isPlaying = true
             }
         } label: {
-            Image(systemName: isPlaying ? "speaker.wave.2" :  "speaker.slash")
+            Image(systemName: isPlaying ? "speaker.slash" :  "speaker.wave.2")
                 .padding(3)
                 .border(
                     .red,
                     width: accessibilityShowButtonShapes ? 1 : 0
                 )
+                
+                
         }
         .foregroundColor(.black)
     }
@@ -148,7 +150,7 @@ struct CombineEssencesView: View {
                                     drop()
                                 }
                                 smokeName = (essence1?.smokeColor)!
-                            }.accessibility(label: (essence1 != nil) ? Text("First Drag area filled with \(essence1?.value ?? "")") : Text("First Drag area empty"))
+                            }.accessibility(label: (essence1 != nil) ? Text("First mixture space filled with \(essence1?.value ?? "")") : Text("First mixture space empty"))
                                 .accessibilityRemoveTraits(.isImage)
                             
                             
@@ -165,7 +167,7 @@ struct CombineEssencesView: View {
                                     drop()
                                 }
                                 smokeName = (essence2?.smokeColor)!
-                            }.accessibility(label: (essence2 != nil) ? Text("Second Drag area filled with \(essence2?.value ?? "")") : Text("Second Drag area empty"))
+                            }.accessibility(label: (essence2 != nil) ? Text("Second mixture space filled with \(essence2?.value ?? "")") : Text("Second mixture space empty"))
                                 .accessibilityRemoveTraits(.isImage)
                         }
                         Divider()
