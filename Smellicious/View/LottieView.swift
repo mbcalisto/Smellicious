@@ -28,7 +28,7 @@ struct LottieView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {
-        print(#function, name)
+//        print(#function, name)
         if let animationView = uiView.subviews.first as? AnimationView {
             let animation = Animation.named(name)
             animationView.animation = animation

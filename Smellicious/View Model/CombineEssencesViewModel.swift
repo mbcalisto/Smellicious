@@ -21,6 +21,7 @@ func Mancha() -> some View {
         .resizable()
         .aspectRatio(contentMode: .fit)
         .frame(width: 284, height: 213, alignment: .center)
+        .accessibilityHidden(true)
 }
 
 @ViewBuilder

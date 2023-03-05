@@ -100,6 +100,9 @@ public struct DragAndDropView: View {
                         .foregroundColor(Color(red: 50/255, green: 73/255, blue: 60/255))
                         .frame(width: 350,alignment: .center)
                         .fixedSize(horizontal: false, vertical: true)
+                        .accessibilityRepresentation {
+                            Text("To discover new aromas, choose two different essences, just clicking on each one and find out if is the best match.")
+                        }
                 }
             }.padding(.top, topSpacing)
         }
@@ -148,6 +151,9 @@ public struct PropertiesView: View {
                     .foregroundColor(Color(red: 50/255, green: 73/255, blue: 60/255))
                     .padding(.bottom,30)
                     .fixedSize(horizontal: false, vertical: true)
+                    .accessibilityRepresentation {
+                        Text("Click and hold for a second on the essence of your interest and discover all the benefits it can bring. So, let's find your perfect match?")
+                    }
                     Button(action: {
                         showsOnboard.toggle()
                     }, label: {

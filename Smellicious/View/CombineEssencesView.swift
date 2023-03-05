@@ -26,6 +26,13 @@ struct CombineEssencesView: View {
     @State var sparkles = false
     @State var droppedEssence1: EssenceModel? = nil
     @State var droppedEssence2: EssenceModel? = nil
+    @State private var showingAlert: Bool = false
+    @State var response = false
+    @State var alertTitle: String = " "
+    @State var alertMessage: String = " "
+    
+    private var alertButtonText: String = "Start Over!"
+    
     
     func drag(){
         let pathSounds = Bundle.main.path(forResource: "drag", ofType: "wav")!
@@ -60,13 +67,12 @@ struct CombineEssencesView: View {
         do {
             humidify = try AVAudioPlayer(contentsOf: soundURL)
         } catch {
-            print(error.localizedDescription)
+            print(error)
         }
         humidify.play()
         humidify.volume = 0.4
         humidify.numberOfLoops = 5
     }
-    
     func ResetButton() -> some View {
         Button(action: {
             smokeName = "defaultSmoke"
@@ -82,7 +88,11 @@ struct CombineEssencesView: View {
                 )
         })
     }
-    
+    func ResetAll(){
+        smokeName = "defaultSmoke"
+        essence1 = nil
+        essence2 = nil
+    }
     func mutedButton() -> some View {
         Button {
             if isPlaying {
@@ -93,12 +103,14 @@ struct CombineEssencesView: View {
                 isPlaying = true
             }
         } label: {
-            Image(systemName: isPlaying ? "speaker.wave.2" :  "speaker.slash")
+            Image(systemName: isPlaying ? "speaker.slash" :  "speaker.wave.2")
                 .padding(3)
                 .border(
                     .red,
                     width: accessibilityShowButtonShapes ? 1 : 0
                 )
+                
+                
         }
         .foregroundColor(.black)
     }
@@ -138,10 +150,10 @@ struct CombineEssencesView: View {
                                     drop()
                                 }
                                 smokeName = (essence1?.smokeColor)!
-                            }.accessibility(label: (essence1 != nil) ? Text("First Drag area filled with \(essence1?.value ?? "")") : Text("First Drag area empty"))
+                            }.accessibility(label: (essence1 != nil) ? Text("First essence space filled with \(essence1?.value ?? "")") : Text("First essence space empty"))
                                 .accessibilityRemoveTraits(.isImage)
                             
-
+                            
                             DropArea2(essence: essence2) { id in
                                 let impact = UIImpactFeedbackGenerator(style: .heavy)
                                 impact.impactOccurred()
@@ -155,7 +167,7 @@ struct CombineEssencesView: View {
                                     drop()
                                 }
                                 smokeName = (essence2?.smokeColor)!
-                            }.accessibility(label: (essence2 != nil) ? Text("Second Drag area filled with \(essence2?.value ?? "")") : Text("Second Drag area empty"))
+                            }.accessibility(label: (essence2 != nil) ? Text("Second essence space filled with \(essence2?.value ?? "")") : Text("Second essence space empty"))
                                 .accessibilityRemoveTraits(.isImage)
                         }
                         Divider()
@@ -180,21 +192,21 @@ struct CombineEssencesView: View {
                         mutedButton()
                     }
             }
-
+            
         }.accessibilityHidden(popupNegative || popupPositive)
-        .onAppear(perform: {
-            playSounds("humidifySound.mp3")
-        })
-        .overlay {
-            if sparkles {
-                LottieView(name: "confete")
-                    .offset(x: 0, y: -200)
-            }
-            popupView(popupPositive: $popupPositive, popupNegative: $popupNegative, smokeName: $smokeName, essence1: $essence1, essence2: $essence2, sparkles: $sparkles)
+            .onAppear(perform: {
+                playSounds("humidifySound.mp3")
+            })
+            .overlay {
+                if sparkles {
+                    LottieView(name: "confete")
+                        .offset(x: 0, y: -200)
+                }
+                popupView(popupPositive: $popupPositive, popupNegative: $popupNegative, smokeName: $smokeName, essence1: $essence1, essence2: $essence2, sparkles: $sparkles)
                 
-        }
+            }
     }
-
+    
     @ViewBuilder
     func DragArea() -> some View {
         TabView {
@@ -248,8 +260,7 @@ struct CombineEssencesView: View {
                                 .frame(width: SizesComponents.widthScreen*0.20,
                                        height: SizesComponents.widthScreen*0.20, alignment: .leading)
                                 .contentShape(.dragPreview, Circle())
-                                
-                            //                                .disabled(true)
+                            
                         }
                     }
                 }
@@ -260,7 +271,18 @@ struct CombineEssencesView: View {
         .onAppear {
             UIPageControl.appearance().currentPageIndicatorTintColor = .black
             UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
-        }
+                
+        }.alert(Text(alertTitle),
+                isPresented: $showingAlert,
+                actions: {
+            
+                    Button(alertButtonText) {
+                        ResetAll()
+                    }
+                }, message: {
+                    Text(alertMessage)
+                }
+            )
     }
     
     func checkMisture() -> Bool {
@@ -272,26 +294,47 @@ struct CombineEssencesView: View {
         }
         
         if essence2.niceMistures.contains(essence1.value) {
-            DispatchQueue.main.async {
-                withAnimation {
-                    sparkles = true
+            if UIAccessibility.isVoiceOverRunning {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
+                    showingAlert = true
+                    alertTitle = "Yes!"
+                    alertMessage = "Your combination is a success! Enjoy your new scent. How about reading a book to make this moment even more perfect?"
+        
                 }
+            }else{
+                
+                 DispatchQueue.main.async {
+                     withAnimation {
+                         sparkles = true
+                     }
+                 }
+                     withAnimation {
+                         popupPositive = true
+                 }
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                withAnimation {
-                    popupPositive = true
-                }
-            }
+            
             return true
-        } else {
-            withAnimation {
-                popupNegative = true
-                return true
+        }
+        else {
+            if UIAccessibility.isVoiceOverRunning {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
+                    showingAlert = true
+                    alertTitle = "Oh no!"
+                    alertMessage = "\(essence1.badMisture)"
+                }
+//                ResetAll()
+                
+            }else{
+                     withAnimation {
+                         popupNegative = true
+                }
+//                ResetAll()
             }
+            
         }
         return false
     }
-
+    
     func dropAccessibilityMode(row: EssenceModel) {
         for item in essences {
             if item.id == row.id && essence1 == nil {
@@ -313,7 +356,7 @@ struct CombineEssencesView: View {
                 essence1 = nil
                 essence2 = nil
             }
-
+            
         }
     }
 }
