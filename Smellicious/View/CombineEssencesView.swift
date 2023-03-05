@@ -150,7 +150,7 @@ struct CombineEssencesView: View {
                                     drop()
                                 }
                                 smokeName = (essence1?.smokeColor)!
-                            }.accessibility(label: (essence1 != nil) ? Text("First mixture space filled with \(essence1?.value ?? "")") : Text("First mixture space empty"))
+                            }.accessibility(label: (essence1 != nil) ? Text("First essence space filled with \(essence1?.value ?? "")") : Text("First essence space empty"))
                                 .accessibilityRemoveTraits(.isImage)
                             
                             
@@ -167,7 +167,7 @@ struct CombineEssencesView: View {
                                     drop()
                                 }
                                 smokeName = (essence2?.smokeColor)!
-                            }.accessibility(label: (essence2 != nil) ? Text("Second mixture space filled with \(essence2?.value ?? "")") : Text("Second mixture space empty"))
+                            }.accessibility(label: (essence2 != nil) ? Text("Second essence space filled with \(essence2?.value ?? "")") : Text("Second essence space empty"))
                                 .accessibilityRemoveTraits(.isImage)
                         }
                         Divider()
