@@ -28,7 +28,7 @@ struct CombineEssencesView: View {
     @State var droppedEssence2: EssenceModel? = nil
     @State private var showingAlert: Bool = false
     @State var response = false
-    @State var alertTitle: String = " "
+    @State var alertTitle: LocalizedStringKey = " "
     @State var alertMessage: String = " "
     
     private var alertButtonText: String = "Start Over!"
@@ -173,7 +173,7 @@ struct CombineEssencesView: View {
                         Divider()
                             .frame(width:330)
                             .padding(.top)
-                        Text("Essences")
+                        Text("essences")
                             .fontWeight(.medium)
                             .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
                             .font(.system(.title, design: .rounded))
@@ -297,8 +297,8 @@ struct CombineEssencesView: View {
             if UIAccessibility.isVoiceOverRunning {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
                     showingAlert = true
-                    alertTitle = "Yes!"
-                    alertMessage = "Your combination is a success! Enjoy your new scent. How about reading a book to make this moment even more perfect?"
+                    alertTitle = "yes"
+                    alertMessage = "alertMessageAccessibility"
         
                 }
             }else{
@@ -319,7 +319,7 @@ struct CombineEssencesView: View {
             if UIAccessibility.isVoiceOverRunning {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
                     showingAlert = true
-                    alertTitle = "Oh no!"
+                    alertTitle = "ohno"
                     alertMessage = "\(essence1.badMisture)"
                 }
 //                ResetAll()

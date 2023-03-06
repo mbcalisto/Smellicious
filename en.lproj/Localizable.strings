@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Smellicious
+
+  Created by Paulo Henrique Gomes da Silva on 06/03/23.
+  
+*/
+"essences" = "Essences";
+"yes" = "Yes!";
+"alertMessageAccessibility" = "Your combination is a success! Enjoy your new scent. How about reading a book to make this moment even more perfect?";
+"ohno" = "Oh no!";
