@@ -150,7 +150,7 @@ struct CombineEssencesView: View {
                                     drop()
                                 }
                                 smokeName = (essence1?.smokeColor)!
-                            }.accessibility(label: (essence1 != nil) ? Text("First essence space filled with \(essence1?.value ?? "")") : Text("First essence space empty"))
+                            }.accessibility(label: (essence1 != nil) ? Text("First drop area filled with \(essence1?.value ?? "")") : Text("First drop area empty"))
                                 .accessibilityRemoveTraits(.isImage)
                             
                             
@@ -167,7 +167,7 @@ struct CombineEssencesView: View {
                                     drop()
                                 }
                                 smokeName = (essence2?.smokeColor)!
-                            }.accessibility(label: (essence2 != nil) ? Text("Second essence space filled with \(essence2?.value ?? "")") : Text("Second essence space empty"))
+                            }.accessibility(label: (essence2 != nil) ? Text("Second drop area filled with \(essence2?.value ?? "")") : Text("Second drop area empty"))
                                 .accessibilityRemoveTraits(.isImage)
                         }
                         Divider()
@@ -194,6 +194,7 @@ struct CombineEssencesView: View {
             }
             
         }.accessibilityHidden(popupNegative || popupPositive)
+            .navigationViewStyle(.stack)
             .onAppear(perform: {
                 playSounds("humidifySound.mp3")
             })
