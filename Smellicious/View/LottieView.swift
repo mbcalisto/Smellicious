@@ -10,7 +10,7 @@ struct LottieView: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
         let view = UIView(frame: .zero)
         
-        let animationView = AnimationView()
+        let animationView = LottieAnimationView()
         let animation = Animation.named(name)
         animationView.animation = animation
         animationView.contentMode = .scaleAspectFit
@@ -28,8 +28,7 @@ struct LottieView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {
-//        print(#function, name)
-        if let animationView = uiView.subviews.first as? AnimationView {
+        if let animationView = uiView.subviews.first as? LottieAnimationView {
             let animation = Animation.named(name)
             animationView.animation = animation
             animationView.contentMode = .scaleAspectFit

@@ -194,6 +194,7 @@ struct CombineEssencesView: View {
             }
             
         }.accessibilityHidden(popupNegative || popupPositive)
+            .navigationViewStyle(.stack)
             .onAppear(perform: {
                 playSounds("humidifySound.mp3")
             })
