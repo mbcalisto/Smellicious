@@ -6,3 +6,30 @@
   
 */
 "essences" = "Essências";
+"yes" = "Sucesso!";
+"alertMessageAccessibility" = "Sua combinação foi bem sucedida! Aproveite seu novo aroma. Que tal ler um livro e tornar esse momento mais perfeito?";
+"ohno" = "Oh não!";
+"lavender-bad-misture" = "Lavanda possui um aroma floral, combine com elementos amadeirados e veja a perfeita combinação!";
+"lavender-description" = "Acalma, traz paz e equilíbrio para ambientes agitados. Também garante noites de sonos regeneradoras";
+"lavender" = "Lavanda";
+"reason" = "Razão:";
+"dismiss" = "Voltar";
+"alertHint" = "Esta seção mostra uma mensagem de sucesso e dá sugestões para mais aproveitamento ";
+"accessibilityLabel" = "Atenção: oh não!";
+"start" = "Comece novamente!";
+"passion-fruit" = "Maracujá";
+"coconut" = "Coco";
+"tangerine" = "Tangerina";
+"cherry-blossom" = "Flor de cerejeira";
+"ylang-ylang" = "Ylang Ylang";
+"vanilla" = "Baunilha";
+"peppermint" = "Hortelã";
+"cinnamon" = "Canela";
+"cotton" = "Algodão";
+"lemon" = "Limão ";
+"roses" = "Rosas";
+"emptyFirst" = "Primeiro espaço de essência vazio";
+"emptySecond" = "Segundo espaço de essência vazio";
+"First essence space filled with %@" = "Primeiro espaço ocupado com a essência %@";
+"Second essence space filled with %@" = "Segundo espaço ocupado com a essência %@";
+

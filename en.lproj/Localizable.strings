@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   Smellicious
 
@@ -9,3 +9,26 @@
 "yes" = "Yes!";
 "alertMessageAccessibility" = "Your combination is a success! Enjoy your new scent. How about reading a book to make this moment even more perfect?";
 "ohno" = "Oh no!";
+"lavender-bad-misture" = "Lavender is a floral scent, combine it with woody elements and see what a success!";
+"lavender-description" = "Calms, brings peace and balance to busy ambiences. It also provides regenerating nights sleep.";
+"lavender" = "Lavender";
+"reason" = "Reason";
+"dismiss" = "Dismiss";
+"alertHint" = "This section displays a success message and a suggestion for further enjoyment.";
+"accessibilityLabel" = "Warning: Oh no!";
+"start" = "Start Over!";
+"passion-fruit" = "Passion Fruit";
+"coconut" = "Coconut";
+"tangerine" = "Tangerine";
+"cherry-blossom" = "Cherry Blossom";
+"ylang-ylang" = "Ylang Ylang";
+"vanilla" = "Vanilla";
+"peppermint" = "Peppermint";
+"cinnamon" = "Cinnamon";
+"cotton" = "Cotton";
+"lemon" = "Lemon";
+"roses" = "Roses";
+"emptyFirst" = "First essence space empty";
+"emptySecond" = "Second essence space empty";
+"First essence space filled with %@" = "First essence space filled with %@";
+"Second essence space filled with %@" = "Second essence space filled with %@";

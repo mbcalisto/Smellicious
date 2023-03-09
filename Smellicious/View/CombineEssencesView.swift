@@ -29,9 +29,9 @@ struct CombineEssencesView: View {
     @State private var showingAlert: Bool = false
     @State var response = false
     @State var alertTitle: LocalizedStringKey = " "
-    @State var alertMessage: String = " "
+    @State var alertMessage: LocalizedStringKey = " "
     
-    private var alertButtonText: String = "Start Over!"
+    private var alertButtonText: LocalizedStringKey = "start"
     
     
     func drag(){
@@ -150,7 +150,7 @@ struct CombineEssencesView: View {
                                     drop()
                                 }
                                 smokeName = (essence1?.smokeColor)!
-                            }.accessibility(label: (essence1 != nil) ? Text("First essence space filled with \(essence1?.value ?? "")") : Text("First essence space empty"))
+                            }.accessibility(label: (essence1 != nil) ? Text("First essence space filled with \(Text(essence1?.value ?? ""))") : Text("emptyFirst"))
                                 .accessibilityRemoveTraits(.isImage)
                             
                             
@@ -167,8 +167,8 @@ struct CombineEssencesView: View {
                                     drop()
                                 }
                                 smokeName = (essence2?.smokeColor)!
-                            }.accessibility(label: (essence2 != nil) ? Text("Second essence space filled with \(essence2?.value ?? "")") : Text("Second essence space empty"))
-                                .accessibilityRemoveTraits(.isImage)
+                            }.accessibility(label: (essence2 != nil) ? Text("Second essence space filled with \(Text(essence2?.value ?? ""))") : Text("emptySecond"))
+                                .accessibilityRemoveTraits(.isImage) 
                         }
                         Divider()
                             .frame(width:330)
@@ -214,7 +214,7 @@ struct CombineEssencesView: View {
             ForEach(0..<4) { page in
                 let essences = chunks[page]
                 HStack(spacing: 30) {
-                    ForEach(essences, id: \.self) { row in
+                    ForEach(essences) { row in
                         VStack{
                             let isSelected = row == essence1 || row == essence2
                             ImageElementComponent(essence: row)
@@ -293,7 +293,7 @@ struct CombineEssencesView: View {
             return false
         }
         
-        if essence2.niceMistures.contains(essence1.value) {
+        if essence2.niceMistures.contains(essence1.icon) {
             if UIAccessibility.isVoiceOverRunning {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
                     showingAlert = true
@@ -320,7 +320,7 @@ struct CombineEssencesView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
                     showingAlert = true
                     alertTitle = "ohno"
-                    alertMessage = "\(essence1.badMisture)"
+                    alertMessage = essence1.badMisture
                 }
 //                ResetAll()
                 
