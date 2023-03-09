@@ -32,4 +32,16 @@
 "emptySecond" = "Segundo espaço de essência vazio";
 "First essence space filled with %@" = "Primeiro espaço ocupado com a essência %@";
 "Second essence space filled with %@" = "Segundo espaço ocupado com a essência %@";
+"passion-fruit-bad-misture" = "Por possuir um aroma cítrico, o maracujá combina com essências amadeiradas ou de menta. Tente combinar com elas e acertará em cheio";
+"coconut-bad-misture" = "Coco é uma essência doce de fruta. Tente combinar com elementos ácidos.";
+"tangerine-bad-misture" = "Sendo cítrica, a tangerina vai bem com essências de menta, adocicada e amadeirada. Tente estas combinações, você irá amar";
+"cherry-blossom-bad-misture" = "A flor de cerejeira tem um aroma floral muito doce, combine com elementos bem cítricos para balancear.";
+"ylang-ylang-bad-misture" = "Ylang Ylang é um elemento floral, logo combine com elementos amadeirados e descubra sua nova preferência!";
+"vanilla-bad-misture" = "Por ter um aroma doce, baunilha deve ser combinada com aromas cítricos ou florais para um melhor resultado.";
+"peppermint-bad-misture" = "Hortelã possui aroma de menta, funciona melhor com essências cítricas e amadeiradas.";
+"cinnamon-bad-misture" = "Canela é um elemento amadeirado. Combine com essências florais e veja a mágica!";
+"cotton-bad-misture" = "Por ter aroma amadeirado, o algodão funciona melhor com elementos florais. Tente isso!";
+"lemon-bad-misture" = "Por ser bem cítrico, o limão combina melhor com essências doces, florais ou amadeiradas. Tente uma dessas combinações, você vai amar!";
+"roses-bad-misture" = "Aromas florais combinam com essências amadeiradas. Tente combinar e ver o sucesso que é!";
+
 
