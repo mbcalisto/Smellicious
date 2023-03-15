@@ -38,6 +38,7 @@
 		ABC281E828E3E56D00845937 /* drag.wav in Resources */ = {isa = PBXBuildFile; fileRef = ABC281E728E3E56D00845937 /* drag.wav */; };
 		ABC281EA28E3E57900845937 /* drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = ABC281E928E3E57900845937 /* drop.wav */; };
 		AE06D3E228E29A08009140EC /* humidifySound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE06D3E128E29A08009140EC /* humidifySound.mp3 */; };
+		B993283529B6292A0032F0E1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B993283729B6292A0032F0E1 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,8 @@
 		ABC281E728E3E56D00845937 /* drag.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drag.wav; sourceTree = "<group>"; };
 		ABC281E928E3E57900845937 /* drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drop.wav; sourceTree = "<group>"; };
 		AE06D3E128E29A08009140EC /* humidifySound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = humidifySound.mp3; sourceTree = "<group>"; };
+		B993283629B6292A0032F0E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B993283829B629430032F0E1 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,7 @@
 		ABBBC5A228D351E700AF7895 = {
 			isa = PBXGroup;
 			children = (
+				B993283729B6292A0032F0E1 /* Localizable.strings */,
 				ABBBC5AD28D351E700AF7895 /* Smellicious */,
 				ABBBC5AC28D351E700AF7895 /* Products */,
 			);
@@ -240,6 +244,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = ABBBC5A228D351E700AF7895;
 			packageReferences = (
@@ -274,6 +279,7 @@
 				0DBACC9328D8ABB300DAE036 /* pinkSmoke.json in Resources */,
 				0D3704BF28E1DFBA004CB713 /* greenSmoke.json in Resources */,
 				0D3704BD28E1DFB4004CB713 /* brownSmoke.json in Resources */,
+				B993283529B6292A0032F0E1 /* Localizable.strings in Resources */,
 				0DBACC9128D8ABB200DAE036 /* vanillaSmoke.json in Resources */,
 				0DBACC9528D8ABB300DAE036 /* yellowSmoke.json in Resources */,
 				0DBACC9028D8ABB200DAE036 /* redSmoke.json in Resources */,
@@ -304,11 +310,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		B993283729B6292A0032F0E1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B993283629B6292A0032F0E1 /* en */,
+				B993283829B629430032F0E1 /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		ABBBC5CD28D351E800AF7895 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -369,6 +388,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -428,7 +448,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Smellicious/Preview Content\"";
-				DEVELOPMENT_TEAM = XPQY9CM5FF;
+				DEVELOPMENT_TEAM = 949BRFMFQG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -461,7 +481,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Smellicious/Preview Content\"";
-				DEVELOPMENT_TEAM = XPQY9CM5FF;
+				DEVELOPMENT_TEAM = 949BRFMFQG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

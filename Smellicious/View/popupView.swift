@@ -48,22 +48,22 @@ struct popupView: View {
                     .padding(.trailing, 15)
                 
                 VStack(alignment: .leading) {
-                    Text("Oh no!")
+                    Text("ohno")
                         .padding(.top,3)
                         .foregroundColor(.black)
                         .font(.system(.title, design: .rounded))
-                        .accessibilityLabel("Warning: Oh no!")
+                        .accessibilityLabel("accessibilityLabel")
                     
                     Text(essence1?.badMisture ?? " ")
                         .foregroundColor(.black)
                         .font(.system(.subheadline ,design: .rounded))
                         .padding(.trailing, 10)
                         .fixedSize(horizontal: false, vertical: true)
-                        .accessibilityLabel("Reason: \(essence1?.badMisture ?? "")")
+                        .accessibilityLabel(Text("reason") + Text(essence1?.badMisture ?? ""))
                     
                 }
                 .accessibilityElement(children: .combine)
-                .accessibilityHint("This section displays a warning and its reason.")
+                .accessibilityHint("alertHint")
                 
             }
             Button(action: {
@@ -72,7 +72,7 @@ struct popupView: View {
                 }
                 resetEssence()
             }) {
-                Text("Dismiss")
+                Text("dismiss")
                     .frame(maxWidth: .infinity, maxHeight: 45)
                     .background(Color(.white))
                     .foregroundColor(.black)
@@ -101,18 +101,18 @@ struct popupView: View {
                     .padding(.bottom,15)
                     .padding(.trailing, 15)
                 VStack(alignment: .leading) {
-                    Text("Yeeees!")
+                    Text("yes")
                         .padding(.top,3)
                         .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
                         .font(.system(.title, design: .rounded))
-                    Text("Your combination is a success! Enjoy your new scent. How about reading a book to make this moment even more perfect?")
+                    Text("alertMessageAccessibility")
                         .foregroundColor(Color.init( red: 0.19, green: 0.28, blue: 0.23))
                         .font(.system(.subheadline, design: .rounded))
                         .padding(.trailing, 10)
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 .accessibilityElement(children: .combine)
-                .accessibilityHint("This section displays a success message and a suggestion for further enjoyment.")
+                .accessibilityHint("alertHint")
             }
             Button(action: {
                 
@@ -122,7 +122,7 @@ struct popupView: View {
                 }
                 resetEssence()
             }) {
-                Text("Dismiss")
+                Text("dismiss")
                     .frame(maxWidth: .infinity, maxHeight: 45)
                     .background(Color(.white))
                     .foregroundColor(.black)

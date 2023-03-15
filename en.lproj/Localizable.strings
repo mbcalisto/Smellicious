@@ -1,0 +1,58 @@
+/*
+  Localizable.strings
+  Smellicious
+
+  Created by Paulo Henrique Gomes da Silva on 06/03/23.
+  
+*/
+"essences" = "Essences";
+"yes" = "Yes!";
+"alertMessageAccessibility" = "Your combination is a success! Enjoy your new scent. How about reading a book to make this moment even more perfect?";
+"ohno" = "Oh no!";
+"lavender-bad-misture" = "Lavender is a floral scent, combine it with woody elements and see what a success!";
+"lavender-description" = "Calms, brings peace and balance to busy ambiences. It also provides regenerating nights sleep.";
+"lavender" = "Lavender";
+"reason" = "Reason";
+"dismiss" = "Dismiss";
+"alertHint" = "This section displays a success message and a suggestion for further enjoyment.";
+"accessibilityLabel" = "Warning: Oh no!";
+"start" = "Start Over!";
+"passion-fruit" = "Passion Fruit";
+"coconut" = "Coconut";
+"tangerine" = "Tangerine";
+"cherry-blossom" = "Cherry Blossom";
+"ylang-ylang" = "Ylang Ylang";
+"vanilla" = "Vanilla";
+"peppermint" = "Peppermint";
+"cinnamon" = "Cinnamon";
+"cotton" = "Cotton";
+"lemon" = "Lemon";
+"roses" = "Roses";
+"emptyFirst" = "First essence space empty";
+"emptySecond" = "Second essence space empty";
+"First essence space filled with %@" = "First essence space filled with %@";
+"Second essence space filled with %@" = "Second essence space filled with %@";
+"passion-fruit-bad-misture" = "Because it is a citrus aroma, passion fruit combines more with woody or menthol essences. Try these combinations and it will be a hit!";
+"coconut-bad-misture" = "Coconut is a sweet fruity essence. Try combining it with more acidic elements.";
+"tangerine-bad-misture" = "Being citrusy, tangerine goes well with minty, sweety or woody essences. Try these combinations, you will love it!";
+"cherry-blossom-bad-misture" = "As it is a very sweet floral scent, combine with a very citrusy element to balance";
+"ylang-ylang-bad-misture" = "Ylang Ylang is a floral element, try it with woody elements and discover your new passion!";
+"vanilla-bad-misture" = "Because it is a sweet aroma, vanilla should be combined with citrus or floral aromas for a better result.";
+"peppermint-bad-misture" = "Peppermint is a minty scent, it works best with citrus and woody essences.";
+"cinnamon-bad-misture" = "Cinnamon is a woody element. Combine with flower essences and see the magic!";
+"cotton-bad-misture" = "Because it has a woody scent, cotton works best with a floral element. Try this!";
+"lemon-bad-misture" = "Due to its citricity, lemon goes well with sweet, floral or woody essences. Try one of these combinations, you will love it!";
+"roses-bad-misture" = "Floral aromas match with woody essences. Try to combine and see what success!";
+"passion-fruit-description" = "With relaxing properties, it reduces stress and anxiety and provides a peaceful sleep.";
+"coconut-description" = "Stimulates well-being. Calms the nerves and promotes spiritual peace. In addition, it has soothing properties for the skin, reducing inflammation and promoting hydration.";
+"tangerine-description" = "Cheerful aroma, acts as a stimulant, reducing stress and increasing energy to produce.";
+"cherry-blossom-description" = "With a floral and sweet aroma, it transmits a sensation of comfort and coziness, in addition to acting as a euphoriator. Ideal for romantic ambiences.";
+"ylang-ylang-description" = "It has aphrodisiac properties and exotic aroma, in addition to decreasing nervous and muscular tension.";
+"vanilla-description" = "It has a fragrant, sweet and delicate aroma. In aromatherapy, it helps to alleviate the effects of anxiety, nervousness, depression and insomnia.";
+"peppermint-description" = "It helps with concentration and motivates high performance in activities, as well as making breathing more pleasant due to the menthol aroma.";
+"cinnamon-description" = "Stimulating aroma that improves mood has great aphrodisiac and anti-inflammatory potential.";
+"cotton-description" = "With woody notes, it fights insomnia and transmits freshness to the environment. It also has antidepressant potential.";
+"lemon-description" = "It has a citrus and light aroma. It promotes concentration in studies and work, as well as improving mood and physical and mental resistance to stress.";
+"roses-description" = "With a sweet and pleasant aroma, it will be the calming element of the ambience, bringing peace, romanticism and sensuality.";
+
+

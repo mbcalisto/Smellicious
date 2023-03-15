@@ -1,0 +1,58 @@
+/* 
+  Localizable.strings
+  Smellicious
+
+  Created by Paulo Henrique Gomes da Silva on 06/03/23.
+  
+*/
+"essences" = "Essências";
+"yes" = "Sucesso!";
+"alertMessageAccessibility" = "Sua combinação foi bem sucedida! Aproveite seu novo aroma. Que tal ler um livro e tornar esse momento mais perfeito?";
+"ohno" = "Oh não!";
+"lavender-bad-misture" = "Lavanda possui um aroma floral, combine com elementos amadeirados e veja a perfeita combinação!";
+"lavender-description" = "Acalma, traz paz e equilíbrio para ambientes agitados. Também garante noites de sonos regeneradoras";
+"lavender" = "Lavanda";
+"reason" = "Razão:";
+"dismiss" = "Voltar";
+"alertHint" = "Esta seção mostra uma mensagem de sucesso e dá sugestões para mais aproveitamento ";
+"accessibilityLabel" = "Atenção: oh não!";
+"start" = "Comece novamente!";
+"passion-fruit" = "Maracujá";
+"coconut" = "Coco";
+"tangerine" = "Tangerina";
+"cherry-blossom" = "Flor de cerejeira";
+"ylang-ylang" = "Ylang Ylang";
+"vanilla" = "Baunilha";
+"peppermint" = "Hortelã";
+"cinnamon" = "Canela";
+"cotton" = "Algodão";
+"lemon" = "Limão ";
+"roses" = "Rosas";
+"emptyFirst" = "Primeiro espaço de essência vazio";
+"emptySecond" = "Segundo espaço de essência vazio";
+"First essence space filled with %@" = "Primeiro espaço ocupado com a essência %@";
+"Second essence space filled with %@" = "Segundo espaço ocupado com a essência %@";
+"passion-fruit-bad-misture" = "Por possuir um aroma cítrico, o maracujá combina com essências amadeiradas ou de menta. Tente combinar com elas e acertará em cheio";
+"coconut-bad-misture" = "Coco é uma essência doce de fruta. Tente combinar com elementos ácidos.";
+"tangerine-bad-misture" = "Sendo cítrica, a tangerina vai bem com essências de menta, adocicada e amadeirada. Tente estas combinações, você irá amar";
+"cherry-blossom-bad-misture" = "A flor de cerejeira tem um aroma floral muito doce, combine com elementos bem cítricos para balancear.";
+"ylang-ylang-bad-misture" = "Ylang Ylang é um elemento floral, logo combine com elementos amadeirados e descubra sua nova preferência!";
+"vanilla-bad-misture" = "Por ter um aroma doce, baunilha deve ser combinada com aromas cítricos ou florais para um melhor resultado.";
+"peppermint-bad-misture" = "Hortelã possui aroma de menta, funciona melhor com essências cítricas e amadeiradas.";
+"cinnamon-bad-misture" = "Canela é um elemento amadeirado. Combine com essências florais e veja a mágica!";
+"cotton-bad-misture" = "Por ter aroma amadeirado, o algodão funciona melhor com elementos florais. Tente isso!";
+"lemon-bad-misture" = "Por ser bem cítrico, o limão combina melhor com essências doces, florais ou amadeiradas. Tente uma dessas combinações, você vai amar!";
+"roses-bad-misture" = "Aromas florais combinam com essências amadeiradas. Tente combinar e ver o sucesso que é!";
+"passion-fruit-description" = "Com propriedades relaxantes, reduz o estresse e a ansiedade, também garante uma boa noite de sono.";
+"coconut-description" = "Estimula o bem estar. Acalma os nervos e proporciona paz espiritual. Além disso, tem propriedades estimulantes para a pele, reduzindo inflamação e deixando hidratada.";
+"tangerine-description" = "Um aroma de disposição, age como estimulante, reduzindo estresse e aumentando a energia de produção.";
+"cherry-blossom-description" = "Com um aroma doce e floral, transmite a sensação de conforto, além disso, também age como euforiador. Ideal para ambientes românticos.";
+"ylang-ylang-description" = "Possui propriedades afrodisíacas e exóticas, além de diminuir o nervosismo e tensão muscular.";
+"vanilla-description" = "Possui uma fragância de aroma doce e delicada. Na aromaterapia, ajuda a aliviar os sintomas de ansiedade, nervosismo, depressão e insônia.";
+"peppermint-description" = "Ajuda na concentração e aumenta a performance nas atividades, como também faz a respiração ser mais agradável por conta do aroma de menta.";
+"cinnamon-description" = "Aroma estimulante que melhora o humor e possui potêncial anti-inflamatório e afrodisíaco.";
+"cotton-description" = "Com tons amadeirados, o algodão combate a insônia e transmite frescor para o ambiente. Também é um potencial antidepressivo.";
+"lemon-description" = "Possui um aroma cítrico leve. Promove concentração nos estudos e trabalho, além de melhorar o humor e resistência física e mental contra o estresse.";
+"roses-description" = "Com um aroma doce prazeroso, vai ser um elemento calmante do ambiente, trazendo paz, romantismo e sensualidade.";
+
+
